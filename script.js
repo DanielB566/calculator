@@ -8,36 +8,36 @@ function calculateAndDisplay(){
     let totalBill = calculateTotalBill(bill, tip)
     let amtPerPers = calculateAmtPerPers(totalBill, numOfPpl)
 
-    document.getElementById('tipResult').innerText = 'Tip: $' + tip.tofixed(2)
+    document.getElementById('tipResult').innerText = 'Tip: $' + tip.toFixed(2) // chops off everything after second demcial. tofixed(#)
     document.getElementById('totalBillResult').innerText =
-     'Total Bill: $' + totalBill.tofixed(2)
-    document.getElementById('amtPerPersonResult').innerText = 'Amount per person: $' + amtPerPers.tofixed(2)
+     'Total Bill: $' + totalBill.toFixed(2)
+    document.getElementById('amtPerPersonResult').innerText = 'Amount per person: $' + amtPerPers.toFixed(2)
 }
 
+// helper func to calc tip based on the bill and service quality
 
+function calculateTip(bill, quality){
+    if(quality === 'Great'){ // 20% tip
+        return bill * .20
+    }
+    else if(quality === 'Good'){ // 15% tip
+        return bill * .15
+    }
+    else if(quality === 'Poor'){ // 10% tip
+        return bill * .1
+    }
+    else{
+        return 0
+    }
+}
 
+function calculateTotalBill(bill, tip){
+    return bill + tip
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function calculateAmtPerPers    (bill, numOfPpl){
+    return bill / numOfPpl
+}
 
 
 
